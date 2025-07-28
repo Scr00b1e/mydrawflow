@@ -40,8 +40,8 @@
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="multiple">
         <i class="fas fa-code-branch"></i><span> Multiple inputs/outputs</span>
       </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="condition">
-        <i class="fas fa-code-branch"></i><span> Condition</span>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="response">
+        <i class="fas fa-code-branch"></i><span> Response</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="personalized">
         <i class="fas fa-fill"></i><span> Personalized</span>
@@ -246,15 +246,21 @@
             `;
             editor.addNode('multiple', 3, 4, pos_x, pos_y, 'multiple', {}, multiple );
             break;
-          case 'condition':
-            var condition = `
-            <div>
-              <div class="box">
-                Condition
+          case 'response':
+            var response = `
+            <div class="box dbclickbox" oncondtitionclick="showpopup(event)">
+                Response
+                <div class="modal" style="display:none">
+                  <div class="modal-content">
+                    <span class="close" onclick="closemodal(event)">&times;</span>
+                    Change your variable {name} !
+                    <input type="text" df-name>
+                  </div>
+
+                </div>
               </div>
-            </div>
             `;
-            editor.addNode('condition', 1, 2, pos_x, pos_y, 'condition', {}, condition );
+            editor.addNode('response', 1, 1, pos_x, pos_y, 'response', {}, response );
             break;
           case 'personalized':
             var personalized = `
