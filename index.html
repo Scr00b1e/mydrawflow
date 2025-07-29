@@ -49,6 +49,9 @@
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="dbclick">
         <i class="fas fa-mouse"></i><span> DBClick!</span>
       </div>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="httprequest">
+        <i class="fas fa-mouse"></i><span> HTTP Request</span>
+      </div>
 
 
     </div>
@@ -222,19 +225,26 @@
             `;
             editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
             break;
-
+          case 'httprequest':
+            var httprequest = `
+            <div>
+              <div class="title-box"><i class="fas fa-at"></i> HTTP Request </div>
+            </div>
+            `;
+            editor.addNode('httprequest', 0,1, pos_x, pos_y, 'httprequest', {}, httprequest);
+            break;
           case 'template':
             var template = `
             <div>
               <div class="title-box"><i class="fas fa-code"></i> Template</div>
               <div class="box">
-                Ger Vars
-                <textarea df-template></textarea>
+                Get Vars
+                <textarea df-template placeholder="Write your template"></textarea>
                 Output template with vars
               </div>
             </div>
             `;
-            editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": 'Write your template'}, template );
+            editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": ''}, template );
             break;
           case 'multiple':
             var multiple = `
