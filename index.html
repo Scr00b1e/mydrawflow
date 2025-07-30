@@ -219,30 +219,44 @@
             break;
           case 'email':
             var email = `
-            <div>
-              <div class="title-box"><i class="fas fa-at"></i> Send Email </div>
-            </div>
+            <div class="box dbclickbox" ondblclick="showpopup(event)">
+                Send Email
+                <div class="modal" style="display:none">
+                  <div class="modal-content">
+                    <span class="close" onclick="closemodal(event)">&times;</span>
+                    Change your variable {name} !
+                    <input type="text" df-name>
+                  </div>
+
+                </div>
+              </div>
             `;
             editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
             break;
           case 'httprequest':
             var httprequest = `
-            <div>
-              <div class="title-box"><i class="fas fa-at"></i> HTTP Request </div>
-            </div>
+            <div class="box dbclickbox" ondblclick="showpopup(event)">
+                HTTP Request
+                <div class="modal" style="display:none">
+                  <div class="modal-content">
+                    <span class="close" onclick="closemodal(event)">&times;</span>
+                    Change your variable {name} !
+                    <input type="text" df-name>
+                  </div>
+
+                </div>
+              </div>
             `;
             editor.addNode('httprequest', 0,1, pos_x, pos_y, 'httprequest', {}, httprequest);
             break;
           case 'template':
             var template = `
-            <div>
-              <div class="title-box"><i class="fas fa-code"></i> Template</div>
-              <div class="box">
-                Get Vars
-                <textarea df-template placeholder="Write your template"></textarea>
-                Output template with vars
+            <div class="box dbclickbox" ondblclick="Swal.fire({ title: 'Template'})">
+                <div>
+                  Template
+                </div>
+                
               </div>
-            </div>
             `;
             editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": ''}, template );
             break;
@@ -258,7 +272,7 @@
             break;
           case 'response':
             var response = `
-            <div class="box dbclickbox" oncondtitionclick="showpopup(event)">
+            <div class="box dbclickbox" ondblclick="showpopup(event)">
                 Response
                 <div class="modal" style="display:none">
                   <div class="modal-content">
