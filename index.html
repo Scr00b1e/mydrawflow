@@ -35,7 +35,7 @@
         <i class="fas fa-at"></i><span> Email send</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="template">
-        <i class="fas fa-code"></i><span> Template</span>
+        <i class="fas fa-code"></i><span> Code</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="multiple">
         <i class="fas fa-code-branch"></i><span> Multiple inputs/outputs</span>
@@ -164,15 +164,15 @@
           case 'email':
             var email = `
             <div ondblclick="Swal.fire({ title: 'Send Email'})">
-               <div class="title-box"><i class="fab fa-google-drive"></i> Send Email </div>
+               <div class="title-box"><i class="fas fa-at"></i> Send Email </div>
               </div>
             `;
             editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
             break;
           case 'template':
             var template = `
-            <div ondblclick="Swal.fire({ title: 'Template'})">
-                <div class="title-box"><i class="fab fa-google-drive"></i> Template </div>
+            <div ondblclick="Swal.fire({ title: 'Code'})">
+                <div class="title-box"><i class="fas fa-code"></i> Code </div>
               </div>
             `;
             editor.addNode('template', 1, 1, pos_x, pos_y, 'template', { "template": ''}, template );
@@ -180,7 +180,7 @@
           case 'multiple':
             var multiple = `
             <div ondblclick="Swal.fire({ title: 'Mutlitple intputs/outputs'})">
-              <div class="title-box"><i class="fab fa-google-drive"></i> Multiple </div>
+              <div class="title-box"><i class="fas fa-code-branch"></i> Multiple </div>
             </div>
             `;
             editor.addNode('multiple', 3, 4, pos_x, pos_y, 'multiple', {}, multiple );
