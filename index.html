@@ -203,15 +203,15 @@
         
         case 'log':
             var log = `
-            <div>
-              <div class="title-box"><i class="fas fa-file-signature"></i> Save log file </div>
-            </div>
+              <div class="" ondblclick="Swal.fire({ title: 'Save log file'})">
+                <div class="title-box"><i class="fas fa-file-signature"></i> Save log file </div>
+              </div>
             `;
             editor.addNode('log', 1, 0, pos_x, pos_y, 'log', {}, log );
             break;
           case 'google':
             var google = `
-            <div>
+            <div class="" ondblclick="Swal.fire({ title: 'Google Drive save'})">
               <div class="title-box"><i class="fab fa-google-drive"></i> Google Drive save </div>
             </div>
             `;
@@ -219,32 +219,16 @@
             break;
           case 'email':
             var email = `
-            <div class="box dbclickbox" ondblclick="showpopup(event)">
+            <div class="box dbclickbox" ondblclick="Swal.fire({ title: 'Send Email'})">
                 Send Email
-                <div class="modal" style="display:none">
-                  <div class="modal-content">
-                    <span class="close" onclick="closemodal(event)">&times;</span>
-                    Change your variable {name} !
-                    <input type="text" df-name>
-                  </div>
-
-                </div>
               </div>
             `;
             editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email );
             break;
           case 'httprequest':
             var httprequest = `
-            <div class="box dbclickbox" ondblclick="showpopup(event)">
+            <div class="box dbclickbox" ondblclick="Swal.fire({ title: 'HTTP Request'})">
                 HTTP Request
-                <div class="modal" style="display:none">
-                  <div class="modal-content">
-                    <span class="close" onclick="closemodal(event)">&times;</span>
-                    Change your variable {name} !
-                    <input type="text" df-name>
-                  </div>
-
-                </div>
               </div>
             `;
             editor.addNode('httprequest', 0,1, pos_x, pos_y, 'httprequest', {}, httprequest);
@@ -262,7 +246,7 @@
             break;
           case 'multiple':
             var multiple = `
-            <div>
+            <div ondblclick="Swal.fire({ title: 'Mutlitple intputs/outputs'})">
               <div class="box">
                 Multiple!
               </div>
@@ -272,23 +256,15 @@
             break;
           case 'response':
             var response = `
-            <div class="box dbclickbox" ondblclick="showpopup(event)">
+            <div class="box dbclickbox" ondblclick="Swal.fire({ title: 'Response'})">
                 Response
-                <div class="modal" style="display:none">
-                  <div class="modal-content">
-                    <span class="close" onclick="closemodal(event)">&times;</span>
-                    Change your variable {name} !
-                    <input type="text" df-name>
-                  </div>
-
-                </div>
               </div>
             `;
             editor.addNode('response', 1, 1, pos_x, pos_y, 'response', {}, response );
             break;
           case 'personalized':
             var personalized = `
-            <div>
+            <div class="box dbclickbox" ondblclick="Swal.fire({ title: 'Personalized'})">
               Personalized
             </div>
             `;
@@ -296,19 +272,8 @@
             break;
           case 'dbclick':
             var dbclick = `
-            <div>
+            <div ondblclick="Swal.fire({ title: 'Db Click' })">
             <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
-              <div class="box dbclickbox" ondblclick="showpopup(event)">
-                Db Click here
-                <div class="modal" style="display:none">
-                  <div class="modal-content">
-                    <span class="close" onclick="closemodal(event)">&times;</span>
-                    Change your variable {name} !
-                    <input type="text" df-name>
-                  </div>
-
-                </div>
-              </div>
             </div>
             `;
             editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', { name: ''}, dbclick );
