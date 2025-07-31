@@ -147,7 +147,7 @@
         
         case 'log':
             var log = `
-              <div ondblclick="Swal.fire({ title: 'Save log file'})">
+              <div ondblclick="showLogSaveModal()">
                 <div class="title-box"><i class="fas fa-file-signature"></i> Save log file </div>
               </div>
             `;
@@ -220,6 +220,18 @@
 
         default:
       }
+    }
+
+    function showLogSaveModal() {
+      Swal.fire({
+        title: 'Save log file',
+        text: 'This will save the log file to your local storage.',
+        icon: 'question',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Save'
+      });
     }
 
   var transform = '';
