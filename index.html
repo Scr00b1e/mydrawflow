@@ -17,6 +17,7 @@
   <script src="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
 
   <header>
@@ -207,7 +208,7 @@
               <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
             </div>
             `;
-            editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', { name: ''}, dbclick );
+            editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', {}, dbclick );
             break;
           case 'httprequest':
             var httprequest = `
@@ -223,7 +224,6 @@
     }
 
     // SHOW MODALS
-
     function showLogSaveModal() {
       Swal.fire({
         title: 'Save log file',
@@ -233,6 +233,22 @@
         showCancelButton: true,
         cancelButtonText: 'Cancel',
         confirmButtonText: 'Save'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const logData = editor.export();
+            const blob = new Blob([logData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'drawflow-log.json';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
       });
     }
 
@@ -268,9 +284,35 @@
         showCloseButton: true,
         showCancelButton: true,
         cancelButtonText: 'Cancel',
-        confirmButtonText: 'Open Editor'
+        confirmButtonText: 'Apply',
+        onOpen: () => {
+          const container = document.createElement('div');
+          container.id = 'codeEditorContainer';
+          container.style.width = '100%';
+          container.style.height = '400px';
+          Swal.getContent().appendChild(container);
+
+          const aceEditor = ace.edit('codeEditorContainer');
+          aceEditor.setTheme('ace/theme/monokai');  
+          aceEditor.session.setMode('ace/mode/javascript');
+
+          aceEditor.setValue('// Write your code here\nfunction example() {\n  console.log("Hello, Drawflow!");\n}');
+          Swal.getPopup().aceEditor = aceEditor;
+        },
+        preConfirm: () => {
+          const aceEditor = Swal.getPopup().aceEditor;
+          const code = aceEditor.getValue();
+          console.log(code);
+          return code;
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Handle the code submission
+          console.log('Code submitted:', result.value);
+        }
       });
     }
+
 
     function showMulitpleModal() {
       Swal.fire({
