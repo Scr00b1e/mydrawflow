@@ -155,7 +155,7 @@
             break;
           case 'google':
             var google = `
-            <div class="" ondblclick="Swal.fire({ title: 'Google Drive save'})">
+            <div class="" ondblclick="showGoogleSaveModal()">
               <div class="title-box"><i class="fab fa-google-drive"></i> Google Drive save </div>
             </div>
             `;
@@ -163,7 +163,7 @@
             break;
           case 'email':
             var email = `
-            <div ondblclick="Swal.fire({ title: 'Send Email'})">
+            <div ondblclick="showEmailModal()">
                <div class="title-box"><i class="fas fa-at"></i> Send Email </div>
               </div>
             `;
@@ -171,7 +171,7 @@
             break;
           case 'template':
             var template = `
-            <div ondblclick="Swal.fire({ title: 'Code'})">
+            <div ondblclick="showCodeModal()">
                 <div class="title-box"><i class="fas fa-code"></i> Code </div>
               </div>
             `;
@@ -179,7 +179,7 @@
             break;
           case 'multiple':
             var multiple = `
-            <div ondblclick="Swal.fire({ title: 'Mutlitple intputs/outputs'})">
+            <div ondblclick="showMulitpleModal()">
               <div class="title-box"><i class="fas fa-code-branch"></i> Multiple </div>
             </div>
             `;
@@ -187,7 +187,7 @@
             break;
           case 'response':
             var response = `
-            <div ondblclick="Swal.fire({ title: 'Response'})">
+            <div ondblclick="showResponseModal()">
                 <div class="title-box"><i class="fab fa-google-drive"></i> Response </div>
               </div>
             `;
@@ -195,7 +195,7 @@
             break;
           case 'personalized':
             var personalized = `
-            <div  ondblclick="Swal.fire({ title: 'Personalized'})">
+            <div  ondblclick="showPersonalModal()">
               <div class="title-box"><i class="fas fa-fill"></i> Personalized </div>
             </div>
             `;
@@ -203,15 +203,15 @@
             break;
           case 'dbclick':
             var dbclick = `
-            <div ondblclick="Swal.fire({ title: 'Db Click' })">
-            <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
+            <div ondblclick="showDBModal()">
+              <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
             </div>
             `;
             editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', { name: ''}, dbclick );
             break;
           case 'httprequest':
             var httprequest = `
-            <div ondblclick="Swal.fire({ title: 'HTTP Request'})">
+            <div ondblclick="showHTTPRequestModal()">
                 <div class="title-box"><i class="fab fa-google-drive"></i> HTTP Request </div>
               </div>
             `;
@@ -222,6 +222,8 @@
       }
     }
 
+    // SHOW MODALS
+
     function showLogSaveModal() {
       Swal.fire({
         title: 'Save log file',
@@ -231,6 +233,102 @@
         showCancelButton: true,
         cancelButtonText: 'Cancel',
         confirmButtonText: 'Save'
+      });
+    }
+
+    function showEmailModal() {
+      Swal.fire({
+        title: 'Send Email',
+        text: 'This will send an email to the specified address.',
+        icon: 'question',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Send'
+      });
+    }
+
+    function showGoogleSaveModal() {
+      Swal.fire({
+        title: 'Google Drive Save',
+        text: 'This will save the file to your Google Drive.',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Save'
+      });
+    }
+
+    function showCodeModal() {
+      Swal.fire({
+        title: 'Code Node',
+        text: 'This will open a code editor for the node.',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Open Editor'
+      });
+    }
+
+    function showMulitpleModal() {
+      Swal.fire({
+        title: 'Multiple Inputs/Outputs',
+        text: 'This node allows multiple inputs and outputs.',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    function showResponseModal() {
+      Swal.fire({
+        title: 'Response Node',
+        text: 'This node handles responses from other nodes.',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    function showPersonalModal() {
+      Swal.fire({
+        title: 'Personalized Node',
+        text: 'This node allows for personalized configurations.',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    function showDBModal() {
+      Swal.fire({
+        title: 'DB Node',
+        text: 'This node is a database',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    function showHTTPRequestModal() {
+      Swal.fire({
+        title: 'HTTP Request Node',
+        text: 'This node is HTTP Request',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'OK'
       });
     }
 
