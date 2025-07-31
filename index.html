@@ -47,8 +47,8 @@
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="personalized">
         <i class="fas fa-fill"></i><span> Personalized</span>
       </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="dbclick">
-        <i class="fas fa-mouse"></i><span> DBClick!</span>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="mysql">
+        <i class="fas fa-mouse"></i><span> MySQL</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="httprequest">
         <i class="fas fa-mouse"></i><span> HTTP Request</span>
@@ -202,13 +202,13 @@
             `;
             editor.addNode('personalized', 1, 1, pos_x, pos_y, 'personalized', {}, personalized );
             break;
-          case 'dbclick':
-            var dbclick = `
+          case 'mysql':
+            var mysql = `
             <div ondblclick="showDBModal()">
-              <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
+              <div class="title-box"><i class="fas fa-mouse"></i> MySQL</div>
             </div>
             `;
-            editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', {}, dbclick );
+            editor.addNode('mysql', 1, 1, pos_x, pos_y, 'mysql', {}, mysql );
             break;
           case 'httprequest':
             var httprequest = `
@@ -353,12 +353,14 @@
     function showDBModal() {
       Swal.fire({
         title: 'DB Node',
-        text: 'This node is a database',
         icon: 'info',
+        input: 'text',
+        inputPlaceholder: 'Connection string',
+         text: 'e.g. mysql://user:password@host:port/database',
         showCloseButton: true,
         showCancelButton: true,
         cancelButtonText: 'Cancel',
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
       });
     }
 
